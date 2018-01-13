@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Kaushan Script';
+    font-style: normal;
+    font-weight: 400;
+    src: local('☺'),
+        url("../fonts/Kaushan+Script_400_normal.woff") format('woff'), 
+        url("../fonts/Kaushan+Script_400_normal.ttf") format('truetype'), 
+        url("../fonts/Kaushan+Script_400_normal.svg#Kaushan+Script_400_normal") format('svg'); 
+  }
+
+body{
+    margin-top: 73px !important;
+    background-color: #FFF8E1 !important;
+}
+
+a {
+    cursor: pointer !important;
+}

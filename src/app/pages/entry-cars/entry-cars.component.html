@@ -1,3 +1,63 @@
-<p>
-  entry-cars works!
-</p>
+<div class="container container-general">
+  <div class="row justify-content-md-center">
+    <div class="col-8 col-md-7 container-mini-general">
+      <div class="row justify-content-md-center">
+        <div class="col-12 col-md-3">
+          <label>Placa</label>
+          <input [(ngModel)]="txtPlate" class="form-control text-center" type="text" placeholder="Ingresar Placa" maxlength="6" (keyup)="keyUpUpperCase()">
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label>Tarifa Por Minuto</label>
+            <select class="form-control" id="exampleSelect1">
+              <option *ngFor="let rate of rates">{{rate.Rate | currency}} - {{rate.Description}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12 text-center" *ngIf="start === false">
+          <div class="btn-add" (click)="clickGetVehicleByPlate()">
+            Entrar
+            <i class="fa fa-fw fa-plus fa-1x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="vehicles.length > 0">
+    <div class="col-12 col-md-4">
+      {{ vehicles[0].VehicularPlate }}
+    </div>
+  </div>
+  <div class="row justify-content-md-center" *ngIf="vehicles.length === 0 && start === true">
+    <div class="col-8 col-md-7 container-mini-general">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <label>Nombre Conductor</label>
+          <input [(ngModel)]="newDriver" class="form-control" type="text">
+        </div>
+        <div class="col-12 col-md-6">
+          <label>Identificacion Conductor</label>
+          <input [(ngModel)]="newIdentificationDriver" class="form-control" type="text">
+        </div>
+        <div class="col-12 col-md-6">
+          <label>Celular Conductor</label>
+          <input [(ngModel)]="newPhoneDriver" class="form-control" type="text">
+        </div>
+        <div class="col-12 col-md-6">
+          <label>Marca Carro</label>
+          <input [(ngModel)]="newBrand" class="form-control" type="text">
+        </div>
+        <div class="col-12 col-md-6">
+          <label>Color Carro</label>
+          <input [(ngModel)]="newColor" class="form-control" type="text">
+        </div>
+        <div class="col-12 col-md-6 text-center">
+            <div class="btn-add-car">
+              Ingresar
+              <i class="fa fa-fw fa-plus fa-1x"></i>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

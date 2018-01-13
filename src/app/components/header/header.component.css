@@ -1,0 +1,16 @@
+nav{
+    background: rgb(155, 11, 11) !important;   
+    -webkit-box-shadow: 1px 6px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 6px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 6px 5px 0px rgba(0,0,0,0.75);
+}
+a{
+    color: #FFFFFF !important;
+    text-shadow: 1px 1px 2px #164EC9, 0 0 25px #FFFFFF, 0 0 5px #4DE4FF !important;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;
+    font-size: 20px;
+}
+
+a:hover{
+    background: rgb(134, 21, 21) !important;   
+}

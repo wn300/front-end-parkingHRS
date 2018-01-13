@@ -5,6 +5,7 @@ import { EntryCarsComponent } from './entry-cars/entry-cars.component';
 import { ExitCarsComponent } from './exit-cars/exit-cars.component';
 import { RatesComponent } from './rates/rates.component';
 import { HistoricalComponent } from './historical/historical.component';
+import { InServiceComponent } from './in-service/in-service.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
     {
         path: 'Rates',
         component: RatesComponent
+    },
+    {
+        path: 'InService',
+        component: InServiceComponent
     },
     {
         path: 'Historical',

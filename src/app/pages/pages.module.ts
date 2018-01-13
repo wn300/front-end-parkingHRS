@@ -7,6 +7,7 @@ import { HistoricalComponent } from './historical/historical.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
+import { InServiceComponent } from './in-service/in-service.component';
 
 @NgModule({
   imports: [
@@ -19,13 +20,15 @@ import { ComponentsModule } from '../components/components.module';
     EntryCarsComponent,
     ExitCarsComponent,
     RatesComponent,
-    HistoricalComponent
+    HistoricalComponent,
+    InServiceComponent
   ],
   exports: [
     EntryCarsComponent,
     ExitCarsComponent,
     RatesComponent,
-    HistoricalComponent
+    HistoricalComponent,
+    InServiceComponent
   ]
 })
 export class PagesModule { }
