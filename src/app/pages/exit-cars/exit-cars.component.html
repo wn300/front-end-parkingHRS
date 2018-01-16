@@ -1,3 +1,129 @@
-<p>
-  exit-cars works!
-</p>
+<div class="container container-general">
+  <div class="row justify-content-center">
+    <div class="col-11 col-md-7 text-center container-mini-general">
+      <H2>Salida de Vehiculos</H2>
+    </div>
+  </div>
+
+  <div class="row justify-content-center" *ngIf="hide === false">
+    <div class="col-11 col-md-7 container-mini-general">
+      <div class="row justify-content-md-center">
+        <div class="col-12 col-md-3">
+          <label>Placa</label>
+          <input [(ngModel)]="txtPlate" class="form-control text-center" type="text" placeholder="Ingresar Placa" maxlength="6" (keyup)="keyUpUpperCase()">
+        </div>
+        <div class="col-12 col-md-3 text-center" *ngIf="start === false && parking.length === 0">
+          <div class="btn-add btn-top" (click)="clickGetVehicleLastService()">
+            Buscar
+            <i class="fa fa-fw fa-search fa-1x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center" *ngIf="existService === false">
+    <div class="col-11 col-md-7 text-center container-mini-general">
+      <H4>El vehiculo de placa {{txtPlate}} no se encuentra dentro parqueadero en este momento.</H4>
+    </div>
+  </div>
+
+  <div class="row justify-content-center" *ngIf="vehicles.length > 0">
+    <div class="col-11 col-md-7 container-mini-general">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 text-center text-md-left">
+          <label>Placa Vehiculo</label>
+          <h3>
+            {{ vehicles[0].VehicularPlate }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center text-md-left">
+          <label>Nombre Conductor</label>
+          <h3>
+            {{ vehicles[0].Driver }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center text-md-left">
+          <label>Identificacion Conductor</label>
+          <h3>
+            {{ vehicles[0].DriverIdentification }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center text-md-left">
+          <label>Celular Conductor</label>
+          <h3>
+            {{ vehicles[0].Phone }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center text-md-left">
+          <label>Marca Brand</label>
+          <h3>
+            {{ vehicles[0].Brand }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center text-md-left">
+          <label>Color Carro</label>
+          <h3>
+            {{ vehicles[0].Color }}
+          </h3>
+        </div>
+        <div class="col-12 text-center" *ngIf="hide === false">
+          <div class="btn-add-car" (click)="clickConfirmFinalService(parking[0])">
+            Confirmar
+            <i class="fa fa-fw fa-plus fa-1x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center" *ngIf="parking.length > 0 && start === false">
+    <div class="col-11 col-md-7 container-mini-general">
+      <div class="row">
+        <div class="col-6 col-md-6 col-lg-4">
+          <label>Hora de Ingreso</label>
+          <h3>
+            {{parking[0].DateTimeEntry | date:'shortTime'}}
+          </h3>
+        </div>
+        <div class="col-6 col-md-6 col-lg-4">
+          <label>Hora de Salida</label>
+          <h3>
+            {{parking[0].DateTimeExit | date:'shortTime'}}
+          </h3>
+        </div>
+        <div class="col-6 col-md-6 col-lg-4">
+          <label>Fecha</label>
+          <h3>
+            {{parking[0].DateTimeEntry | date: 'dd/MM/yyyy'}}
+          </h3>
+        </div>
+        <div class="col-6 col-md-6 col-lg-4">
+          <label>Tarifa</label>
+          <h3>
+            {{parking[0].Rates.Rate | currency}} - Min
+          </h3>
+        </div>
+        <div class="col-6 col-md-6 col-lg-4">
+          <label>Minutos Transcurridos</label>
+          <h3>
+            {{minutes}}
+          </h3>
+        </div>
+        <div class="col-6 col-md-6 col-lg-4">
+          <label>Total</label>
+          <h3>
+            {{parking[0].ServicePrice | currency}}
+          </h3>
+        </div>
+        <div class="col-12 text-center">
+          <div class="btn-add-car" (click)="clickFinal()">
+            Finalizar
+            <i class="fa fa-fw fa-check fa-1x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

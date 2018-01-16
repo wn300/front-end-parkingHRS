@@ -1,3 +1,48 @@
-<p>
-  historical works!
-</p>
+<div class="container container-general">
+  <div class="row justify-content-center">
+    <div class="col-11 col-md-11 text-center container-mini-general">
+      <H2>Historial Vehiculos</H2>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="historical === false">
+    <div class="col-11 col-md-11 text-center container-mini-general">
+      <h3>
+        No existe historial
+      </h3>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="historical === true">
+    <div class="col-11 col-md-11 text-center container-mini-general">
+      <table class="table table-hover table-sm">
+        <thead class="thead-inverse">
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Placa</th>
+            <th class="text-center">Color</th>
+            <th class="text-center">Conductor</th>
+            <th class="text-center">Celular</th>
+            <th class="text-center">Tarifa</th>
+            <th class="text-center">Fecha</th>
+            <th class="text-center">Hora Entrada</th>
+            <th class="text-center">Hora Salida</th>
+            <th class="text-center">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let parking of parkings">
+            <td>{{parking.Id}}</td>
+            <td>{{parking.Vehicle.VehicularPlate}}</td>
+            <td>{{parking.Vehicle.Color}}</td>
+            <td>{{parking.Vehicle.Driver}}</td>
+            <td>{{parking.Vehicle.Phone}}</td>
+            <td>{{parking.Rates.Rate | currency}}</td>
+            <td>{{parking.DateTimeEntry | date: 'dd/MM/yyyy'}}</td>
+            <td>{{parking.DateTimeEntry | date:'shortTime'}}</td>
+            <td>{{parking.DateTimeExit | date:'shortTime'}}</td>
+            <td>{{(parking.Minutes * parking.Rates.Rate) | currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

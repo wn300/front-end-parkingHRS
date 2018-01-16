@@ -20,12 +20,13 @@ export class Vehicle {
 export class ParkingService {
     Id: number;
     IdRate: number;
-    Rate: Rates[];
+    Rates: Rates[];
     IdVehicle: number;
     Vehicle: Vehicle[];
-    DateTimeEntry: Date;
-    DateTimeExit: Date;
+    DateTimeEntry: string;
+    DateTimeExit: string;
     DriverIdentification: number;
     ServicePrice: number;
     Estate: number;
+    Minutes?: number;
 }

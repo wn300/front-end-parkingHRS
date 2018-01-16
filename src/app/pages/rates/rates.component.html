@@ -1,3 +1,56 @@
-<p>
-  rates works!
-</p>
+<div class="container container-general">
+  <div class="row justify-content-center">
+    <div class="col-11 col-md-11 text-center container-mini-general">
+      <H2>Tarifas</H2>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="ratesExist === false">
+    <div class="col-11 col-md-11 text-center container-mini-general">
+      <h3>
+        No existen tarifas
+      </h3>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="ratesExist === true">
+    <div class="col-11 col-md-11 text-center container-mini-general">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <label>Tarifa</label>
+          <input [(ngModel)]="txtRate" class="form-control text-center" type="number" placeholder="Ingresar Tarifa">
+        </div>
+        <div class="col-12 col-md-5">
+          <div class="form-group">
+            <label>Descrición</label>
+            <input [(ngModel)]="txtDescription" class="form-control text-center" type="text" placeholder="Ingresar Descripción">
+          </div>
+        </div>
+        <div class="col-12 col-md-3 text-center">
+            <div class="btn-add top-btn" (click)="clickAddRate()">
+              Guardar
+              <i class="fa fa-fw fa-save fa-1x"></i>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="ratesExist === true">
+    <div class="col-11 col-md-11 text-center container-mini-general">
+      <table class="table table-hover table-sm">
+        <thead class="thead-inverse">
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Tarifa</th>
+            <th class="text-center">Descripcion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rate of rates">
+            <td>{{rate.Id}}</td>
+            <td>{{rate.Rate | currency}}</td>
+            <td>{{rate.Description}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

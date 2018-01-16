@@ -5,6 +5,5 @@
 
 export const environment = {
   production: false,
-  //server: 'http://portafoliov01-001-site1.itempurl.com/api',
   server: 'http://localhost:51688/api',
 };

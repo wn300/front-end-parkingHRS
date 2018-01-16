@@ -119,7 +119,7 @@ export class EntryCarsComponent implements OnInit {
     const newService = new ParkingService;
     newService.IdRate = this.rateSelect;
     newService.IdVehicle = vehicle[0].Id;
-    newService.DateTimeEntry = new Date();
+    newService.DateTimeEntry = new Date().toLocaleString();
     newService.Estate = 0;
 
     this.serviceParking.postPaking(newService).subscribe(parking =>
