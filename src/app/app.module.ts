@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ParkingCarServiceService } from './services/parkingCar/parking-car-service.service';
 
+import { HttpModule, JsonpModule } from '@angular/http';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +22,9 @@ import { ParkingCarServiceService } from './services/parkingCar/parking-car-serv
     HttpClientModule,
     AppRoutingModule,
     ComponentsModule,
-    PagesModule
+    PagesModule,
+    HttpModule,
+    JsonpModule
   ],
   providers: [ParkingCarServiceService],
   bootstrap: [AppComponent]

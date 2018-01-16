@@ -8,13 +8,15 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 import { InServiceComponent } from './in-service/in-service.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   imports: [
     CommonModule,
     PagesRoutingModule,
     FormsModule,
-    ComponentsModule
+    ComponentsModule,
+    HttpModule
   ],
   declarations: [
     EntryCarsComponent,

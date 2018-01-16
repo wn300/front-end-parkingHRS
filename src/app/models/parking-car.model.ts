@@ -1,4 +1,4 @@
-export interface Rates {
+export class Rates {
     Id: number;
     Rate: number;
     Date: Date;
@@ -6,7 +6,7 @@ export interface Rates {
     ParkingService: ParkingService[];
 }
 
-export interface Vehicle {
+export class Vehicle {
     Id: number;
     VehicularPlate: string;
     Brand: string;
@@ -17,7 +17,7 @@ export interface Vehicle {
     ParkingService: ParkingService[];
 }
 
-export interface ParkingService {
+export class ParkingService {
     Id: number;
     IdRate: number;
     Rate: Rates[];

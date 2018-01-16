@@ -1,5 +1,15 @@
 <div class="container container-general">
   <div class="row justify-content-md-center">
+    <div class="col-8 col-md-7 text-center container-mini-general">
+      <H2>Entrada de Carros</H2>
+    </div>
+  </div>
+  <div class="row justify-content-md-center" *ngIf="existService === true">
+      <div class="col-8 col-md-7 text-center container-mini-general">
+        <H4>El carro se encuentra dentro parqueadero en este momento.</H4>
+      </div>
+    </div>
+  <div class="row justify-content-md-center" *ngIf="parking.length === 0">
     <div class="col-8 col-md-7 container-mini-general">
       <div class="row justify-content-md-center">
         <div class="col-12 col-md-3">
@@ -9,12 +19,12 @@
         <div class="col-12 col-md-6">
           <div class="form-group">
             <label>Tarifa Por Minuto</label>
-            <select class="form-control" id="exampleSelect1">
-              <option *ngFor="let rate of rates">{{rate.Rate | currency}} - {{rate.Description}}</option>
+            <select [(ngModel)]="rateSelect" class="form-control" id="exampleSelect1">
+              <option [ngValue]="rate.Id" *ngFor="let rate of rates">{{rate.Rate | currency}} - {{rate.Description}}</option>
             </select>
           </div>
         </div>
-        <div class="col-12 text-center" *ngIf="start === false">
+        <div class="col-12 text-center" *ngIf="start === false && parking.length === 0">
           <div class="btn-add" (click)="clickGetVehicleByPlate()">
             Entrar
             <i class="fa fa-fw fa-plus fa-1x"></i>
@@ -23,9 +33,52 @@
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="vehicles.length > 0">
-    <div class="col-12 col-md-4">
-      {{ vehicles[0].VehicularPlate }}
+  <div class="row justify-content-md-center" *ngIf="vehicles.length > 0">
+    <div class="col-8 col-md-7 container-mini-general">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+          <label>Placa Vehiculo</label>
+          <h3>
+            {{ vehicles[0].VehicularPlate }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <label>Nombre Conductor</label>
+          <h3>
+            {{ vehicles[0].Driver }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <label>Identificacion Conductor</label>
+          <h3>
+            {{ vehicles[0].DriverIdentification }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <label>Celular Conductor</label>
+          <h3>
+            {{ vehicles[0].Phone }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <label>Marca Brand</label>
+          <h3>
+            {{ vehicles[0].Brand }}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <label>Color Carro</label>
+          <h3>
+            {{ vehicles[0].Color }}
+          </h3>
+        </div>
+        <div class="col-12 text-center" *ngIf="btnConfirm !== false">
+          <div class="btn-add-car" (click)="clickConfirmService(vehicles)">
+            Confirmar
+            <i class="fa fa-fw fa-plus fa-1x"></i>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row justify-content-md-center" *ngIf="vehicles.length === 0 && start === true">
@@ -37,11 +90,11 @@
         </div>
         <div class="col-12 col-md-6">
           <label>Identificacion Conductor</label>
-          <input [(ngModel)]="newIdentificationDriver" class="form-control" type="text">
+          <input [(ngModel)]="newIdentificationDriver" class="form-control" type="number">
         </div>
         <div class="col-12 col-md-6">
           <label>Celular Conductor</label>
-          <input [(ngModel)]="newPhoneDriver" class="form-control" type="text">
+          <input [(ngModel)]="newPhoneDriver" class="form-control" type="number">
         </div>
         <div class="col-12 col-md-6">
           <label>Marca Carro</label>
@@ -52,11 +105,42 @@
           <input [(ngModel)]="newColor" class="form-control" type="text">
         </div>
         <div class="col-12 col-md-6 text-center">
-            <div class="btn-add-car">
-              Ingresar
-              <i class="fa fa-fw fa-plus fa-1x"></i>
-            </div>
+          <div class="btn-add-car" (click)="clickPostVehicleAndService()">
+            Ingresar
+            <i class="fa fa-fw fa-plus fa-1x"></i>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center" *ngIf="parking.length > 0 && start === false">
+    <div class="col-8 col-md-7 container-mini-general">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+          <label>Hora de Ingreso</label>
+          <h3>
+            {{parking[0].DateTimeEntry | date:'shortTime'}}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <label>Fecha</label>
+          <h3>
+            {{parking[0].DateTimeEntry | date: 'dd/MM/yyyy'}}
+          </h3>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <label>Tarifa</label>
+          <h3>
+            {{parking[0].Rate.Rate | currency}} - Min
+          </h3>
+        </div>
+        <div class="col-12 text-center">
+          <div class="btn-add-car" (click)="clickFinal()">
+            Finalizar
+            <i class="fa fa-fw fa-check fa-1x"></i>
+          </div>
+        </div>
       </div>
     </div>
   </div>
